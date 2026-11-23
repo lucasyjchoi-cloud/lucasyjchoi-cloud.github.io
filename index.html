@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yejun Choi — Student Athlete Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,700;1,400&family=Noto+Sans+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --chalk:#F4F1EA; --ink:#12161C; --orange:#FF4D1C; --navy:#0E2A47; --mist:#E4DFD4;
+  --display:'Anton','Archivo',sans-serif; --body:'Archivo',sans-serif; --kr:'Noto Sans KR',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--chalk);color:var(--ink);font-family:var(--body);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+::selection{background:var(--orange);color:#fff}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;display:flex;align-items:center;gap:1.5rem;padding:.8rem 5vw;background:rgba(244,241,234,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--ink)}
+nav .logo{font-family:var(--display);font-size:1.15rem;letter-spacing:.04em}
+nav .logo em{color:var(--orange);font-style:normal}
+nav ul{display:flex;gap:1.3rem;list-style:none;margin-left:auto}
+nav a{color:var(--ink);text-decoration:none;font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;padding:.25rem 0;border-bottom:2px solid transparent}
+nav a:hover{border-bottom-color:var(--orange);color:var(--orange)}
+nav a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden;background:var(--navy)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,42,71,.15) 0%,rgba(18,22,28,.05) 40%,rgba(18,22,28,.88) 100%)}
+.hero-inner{position:relative;z-index:2;padding:6vw 5vw 4.5rem;width:100%;color:#fff}
+.eyebrow{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;padding:.4rem .9rem;margin-bottom:1.2rem}
+.hero h1{font-family:var(--display);font-size:clamp(3.2rem,10vw,8.5rem);line-height:.95;text-transform:uppercase;letter-spacing:.01em}
+.hero h1 .kr{font-family:var(--kr);font-size:.32em;vertical-align:middle;opacity:.85;font-weight:700;margin-left:.4em;letter-spacing:.3em}
+.hero .sub{max-width:34rem;margin-top:1.2rem;font-size:1.05rem;color:#EDEAE2}
+.hero .jersey{position:absolute;right:4vw;top:8vh;z-index:2;font-family:var(--display);font-size:clamp(7rem,18vw,15rem);line-height:1;color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.55);user-select:none}
+.hero .scroll{position:absolute;left:5vw;bottom:1.2rem;font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.75)}
+
+/* ---------- ticker ---------- */
+.ticker{background:var(--orange);color:#fff;overflow:hidden;white-space:nowrap;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.ticker span{display:inline-block;font-family:var(--display);font-size:1.35rem;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 0;animation:tick 28s linear infinite}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker span{animation:none}}
+
+/* ---------- shared section frame ---------- */
+section{padding:5rem 5vw}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.2rem}
+.sec-head h2{font-family:var(--display);font-size:clamp(2rem,4.5vw,3.4rem);text-transform:uppercase;letter-spacing:.02em}
+.sec-head .rule{flex:1;height:3px;background:var(--ink)}
+.sec-head .no{font-family:var(--display);font-size:1rem;color:var(--orange);letter-spacing:.2em}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:3rem;align-items:start}
+.about-grid .lede{font-size:clamp(1.25rem,2.2vw,1.7rem);font-weight:500;line-height:1.45}
+.about-grid .lede strong{color:var(--orange)}
+.about-grid .more{margin-top:1.2rem;max-width:40rem;color:#3A4149}
+.stats{display:grid;gap:1rem}
+.stat{background:var(--ink);color:#fff;padding:1.1rem 1.4rem;display:flex;align-items:baseline;gap:1rem;border-left:6px solid var(--orange)}
+.stat b{font-family:var(--display);font-size:2.2rem;line-height:1}
+.stat span{font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;opacity:.8}
+.g6{margin-top:3rem}
+.g6 h3{font-family:var(--display);font-size:1.3rem;text-transform:uppercase;margin-bottom:.3rem}
+.g6 p.note{font-size:.9rem;color:#5A6169;margin-bottom:1rem}
+.g6 .strip{display:flex;gap:.8rem;overflow-x:auto;padding-bottom:.6rem}
+.g6 .strip img{height:150px;width:auto;flex:0 0 auto;filter:saturate(.92)}
+
+/* ---------- groups / sport cards ---------- */
+.group{border-top:2px solid var(--ink);padding:3.2rem 5vw}
+.group-head{display:flex;align-items:flex-end;gap:1.2rem;margin-bottom:.8rem}
+.group-head .lane{font-family:var(--display);font-size:clamp(2.6rem,5vw,4rem);color:transparent;-webkit-text-stroke:1.5px var(--orange);line-height:1}
+.group-head h3{font-family:var(--display);font-size:clamp(1.8rem,3.6vw,2.8rem);text-transform:uppercase}
+.group-head .en{font-size:.8rem;text-transform:uppercase;letter-spacing:.2em;color:#6B7178}
+.blurb{max-width:44rem;margin-bottom:2rem;color:#3A4149}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.4rem}
+.sport-card{background:#fff;border:2px solid var(--ink);display:flex;flex-direction:column}
+.sport-card-media{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:zoom-in}
+.sport-card-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.sport-card:hover .sport-card-media img{transform:scale(1.04)}
+.sport-num{position:absolute;top:.6rem;left:.8rem;z-index:2;font-family:var(--display);font-size:2rem;color:#fff;-webkit-text-stroke:1.5px var(--ink);text-shadow:0 2px 10px rgba(0,0,0,.4)}
+.sport-card-body{padding:1.1rem 1.2rem 1.3rem;display:flex;flex-direction:column;gap:.35rem;flex:1}
+.sport-card-body h4{font-family:var(--display);font-size:1.35rem;text-transform:uppercase;letter-spacing:.02em}
+
+.sport-card .tagline .when{display:block;margin-top:.25rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--orange)}
+.sport-card .tagline{font-size:.95rem;color:#3A4149}
+.sport-card .count{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:#8A9096;margin-top:auto}
+.view-btn{align-self:flex-start;margin-top:.6rem;background:var(--ink);color:#fff;border:none;font-family:var(--body);font-weight:700;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;padding:.55rem 1rem;cursor:pointer}
+.view-btn:hover{background:var(--orange)}
+
+.arr{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:40px;height:40px;border-radius:50%;border:2px solid #fff;background:rgba(18,22,28,.55);color:#fff;font-size:1.4rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s,background .2s}
+.sport-card-media:hover .arr,.arr:focus-visible{opacity:1}
+.arr:hover{background:var(--orange)}
+.arr.prev{left:.7rem}.arr.next{right:.7rem}
+.counter{position:absolute;right:.7rem;bottom:.6rem;z-index:3;background:rgba(18,22,28,.75);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;padding:.2rem .6rem;border-radius:99px}
+@media (hover:none){.arr{opacity:1;width:34px;height:34px}}
+
+/* ---------- video ---------- */
+.video-sec{background:var(--navy);color:#fff}
+.video-sec .sec-head .rule{background:var(--orange)}
+.video-sec h2{color:#fff}
+.clips{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem}
+@media (max-width:900px){.clips{grid-template-columns:1fr}}
+.clip video{width:100%;background:#000;aspect-ratio:16/9}
+.clip figcaption{display:flex;justify-content:space-between;gap:1rem;padding:.6rem .2rem;font-size:.85rem}
+.clip figcaption strong{font-family:var(--display);font-weight:400;text-transform:uppercase;letter-spacing:.03em}
+.clip figcaption span{opacity:.65}
+
+
+/* ---------- family (seamless, page-blended) ---------- */
+.family{margin-top:3rem}
+.family-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.6rem;flex-wrap:wrap}
+.family-head h3{font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.6rem);text-transform:uppercase;letter-spacing:.02em;color:var(--ink)}
+.family-head .rule{flex:1;height:3px;background:var(--ink)}
+.family-head .fnote{font-size:.85rem;color:#6B7178;flex-basis:100%;margin-top:-.6rem}
+.family-photo{display:flex;justify-content:center;align-items:center;padding:.4rem 0 1.8rem;background:transparent}
+.family-photo img{display:block;width:auto;max-width:min(680px,100%);max-height:560px;height:auto;border:2px solid var(--ink);box-shadow:6px 6px 0 rgba(18,22,28,.14)}
+.family-cols{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem}
+.parent-card{border:2px solid var(--ink);background:#fff;padding:1.15rem 1.3rem;display:flex;gap:1rem;align-items:flex-start}
+.avatar{width:72px;height:72px;border-radius:50%;overflow:hidden;border:2px solid var(--ink);flex:none;background:#E4DFD4}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.parent-card h4{font-size:1.08rem;font-weight:700;line-height:1.25;color:var(--ink)}
+.parent-card .prole{font-size:.72rem;color:#E65128;font-weight:700;margin:.15rem 0 .45rem}
+.parent-card p.pdesc{font-size:.82rem;color:#3A4149}
+.family-close{margin-top:1.3rem;font-size:.88rem;color:#3A4149;font-style:italic}
+@media(max-width:760px){.family-cols{grid-template-columns:1fr}}
+/* ---------- awards ---------- */
+.awards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.4rem}
+.award-card{background:#fff;border:2px solid var(--ink);display:grid;grid-template-columns:110px 1fr;min-height:120px}
+.award-media{background:repeating-linear-gradient(45deg,var(--mist),var(--mist) 10px,#ECE8DE 10px,#ECE8DE 20px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:.6rem}
+.award-media span{font-family:var(--display);text-transform:uppercase;font-size:.9rem;color:#6B7178}
+.award-media p{font-size:.7rem;color:#8A9096;font-family:var(--kr)}
+.award-media{padding:0}.award-media img{width:100%;height:100%;min-height:120px;object-fit:contain;background:#fff;display:block}
+.award-body{padding:1rem 1.2rem}
+.award-body h4{font-size:1.05rem;font-weight:700}
+.award-meta{font-size:.78rem;color:var(--orange);font-weight:700;margin:.15rem 0 .4rem}
+.award-desc{font-size:.88rem;color:#3A4149}
+
+/* ---------- gallery ---------- */
+.masonry{columns:3 260px;column-gap:.9rem}
+.masonry .shot{margin:0 0 .9rem;break-inside:avoid}
+.masonry .shot img{width:100%;cursor:zoom-in}
+
+/* ---------- lightbox ---------- */
+#lb{position:fixed;inset:0;background:rgba(12,14,18,.94);display:none;align-items:center;justify-content:center;z-index:99;cursor:zoom-out}
+#lb.on{display:flex}
+#lb img{max-width:92vw;max-height:92vh}
+#lb button{position:absolute;top:1rem;right:1.2rem;background:none;border:2px solid #fff;color:#fff;font-size:1.2rem;width:44px;height:44px;cursor:pointer}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#fff;padding:3.5rem 5vw}
+footer .big{font-family:var(--display);font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;line-height:1.1}
+footer .big em{color:var(--orange);font-style:normal}
+footer .contact{margin-top:1.4rem;font-size:.95rem;opacity:.85}
+footer .fine{margin-top:2.2rem;font-size:.75rem;opacity:.5;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+@media (max-width:760px){
+  .about-grid{grid-template-columns:1fr}
+  nav ul{gap:.8rem}
+  nav a{font-size:.7rem}
+  .hero .jersey{top:4vh}
+  section{padding:3.5rem 5vw}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">YEJUN<em>27</em></div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#sports">Activities</a></li>
+    <li><a href="#video">In Motion</a></li>
+    <li><a href="#awards">Awards</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <img src="images/img_001.jpg" alt="Yejun sprinting on the track" fetchpriority="high"/>
+  <div class="jersey" aria-hidden="true">27</div>
+  <div class="hero-inner">
+    <span class="eyebrow">Grade 9 Applicant &middot; Fall 2027</span>
+    <h1>Yejun Choi</h1>
+    <p class="sub">Hi, I’m Yejun. I love being active and trying new things. I’m excited to bring that energy to a new school in the United States.</p>
+  </div>
+  <div class="scroll">Scroll &darr;</div>
+</header>
+
+<div class="ticker" aria-hidden="true"><span>Run &bull; Ride &bull; Climb &bull; Shoot &bull; Bowl &bull; Dive &bull; Ski &bull; Skate &bull; Sprint &bull; Paddle &bull; Play &bull; Run &bull; Ride &bull; Climb &bull; Shoot &bull; Bowl &bull; Dive &bull; Ski &bull; Skate &bull; Sprint &bull; Paddle &bull; Play &bull;&nbsp;</span></div>
+
+<section id="about">
+  <div class="sec-head reveal"><span class="no">01</span><h2>About Me</h2><div class="rule"></div></div>
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="lede">I&rsquo;ve loved trying new things for as long as I can remember. Every new field, every new activity &mdash; there&rsquo;s always something more to learn inside it, and that&rsquo;s what makes trying new things so exciting and fun for me.</p>
+      <p class="more">Since elementary school, I’ve enjoyed seeing what I could do with a ball, a bike, or a board. I’m usually a little nervous the first time I try something new, but that’s part of the fun. I like coming back for another try and seeing what I can do a little better.<br><br>In the fall of 2027, I hope to start ninth grade at a school in the United States where I can take challenging classes, explore new subjects, and learn alongside classmates with different experiences. I want to work hard in class, keep playing sports, and be someone my classmates and teammates can count on. By the time I graduate, I hope to have the study habits and confidence to get into a college where I can pursue the interests I discover in high school.</p>
+      <div class="g6">
+        <h3>Elementary School Graduation</h3>
+        <p class="note">My sixth-grade graduation from Chung-Ang University Elementary School.</p>
+        <div class="strip"><img data-key="g6_01" alt="Yejun Choi — elementary school graduation" loading="lazy"/><img data-key="g6_02" alt="Yejun Choi — elementary school graduation" loading="lazy"/><img data-key="g6_03" alt="Yejun Choi — elementary school graduation" loading="lazy"/><img data-key="g6_04" alt="Yejun Choi — elementary school graduation" loading="lazy"/><img data-key="g6_05" alt="Yejun Choi — elementary school graduation" loading="lazy"/><img data-key="g6_06" alt="Yejun Choi — elementary school graduation" loading="lazy"/></div>
+      </div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b>12</b><span>Activities featured</span></div>
+      <div class="stat"><b>9</b><span>Applying for Grade 9</span></div>
+      <div class="stat"><b>2027</b><span>Fall entry</span></div>
+    </div>
+  </div>
+<div class="family reveal">
+  <div class="family-head"><h3>My Family</h3><div class="rule"></div><p class="fnote">The people behind the portfolio.</p></div>
+  <figure class="family-photo"><img src="images/family.jpg" alt="Yejun with his family at his elementary school graduation"/></figure>
+  <div class="family-cols">
+    <div class="parent-card"><span class="avatar"><img src="images/family_mom.jpg" alt="Mom"/></span>
+      <div><h4>Mom</h4><p class="prole">Architect &middot; Founder &amp; CEO</p>
+      <p class="pdesc">Studied architecture in France, then ran interiors at Shinsegae Group &mdash; home to Tiffany &mdash; and for the U.S. fashion company Jones Apparel Group in Korea. Now she runs her own company, creating the big spaces people flock to: resorts, hotels, food courts, golf courses. When my friends said &ldquo;this place is amazing&rdquo; at one of her resorts, I could proudly say it was my mom&rsquo;s work &mdash; she takes the paths others call impossible.</p></div>
+    </div>
+    <div class="parent-card"><span class="avatar"><img src="images/family_dad.jpg" alt="Dad"/></span>
+      <div><h4>Dad</h4><p class="prole">News Team Leader &middot; Korean Journalist Award</p>
+      <p class="pdesc">Studied business, then passed Korea&rsquo;s notoriously tough journalism exam to start as a reporter at SBS. Recruited for his reporting, he now leads the news team at his company &mdash; and has won the Korean Journalist Award, one of the highest honors in Korean journalism. I know how hard he worked for it, so I was as happy about his award as about my own. The man millions trust with their news &mdash; my role model.</p></div>
+    </div>
+  </div>
+  <p class="family-close">My parents work hard and enjoy life &mdash; and they have spared nothing for me: a good education, the sports I love, even our travels. Being their son is my biggest pride. I hope to learn from a wider world in the United States, and one day become someone they can be proud of.</p>
+</div></section>
+
+<section id="sports" style="padding-bottom:0">
+  <div class="sec-head reveal"><span class="no">02</span><h2>Activities</h2><div class="rule"></div></div>
+</section>
+<section class="group" id="group1">
+<div class="group-head"><span class="lane">01</span><div><h3>Track &amp; Soccer</h3><p class="en">On the track and the field</p></div></div>
+<p class="blurb">I like working toward my own goals on the track and sharing a goal with my teammates in soccer. Playing for my school club is also one of my favorite ways to spend time with friends.</p>
+<div class="cards"><article class="sport-card" id="s1">
+<div class="sport-card-media" data-keys='[&quot;track_01&quot;, &quot;track_02&quot;, &quot;track_03&quot;, &quot;track_04&quot;, &quot;track_05&quot;]'><span class="sport-num">01</span><img src="images/img_002.jpg" alt="Track &amp; Field"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 5</span></div>
+<div class="sport-card-body"><h4>Track &amp; Field</h4><p class="tagline">I enjoy sprinting and seeing how much I can improve my time.<span class="when">Since 2024 &middot; school track practices &amp; meets</span></p>
+<p class="count">5 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s2">
+<div class="sport-card-media" data-keys='[&quot;soccer_01&quot;, &quot;soccer_02&quot;, &quot;soccer_03&quot;, &quot;soccer_04&quot;, &quot;soccer_05&quot;, &quot;soccer_06&quot;, &quot;soccer_07&quot;, &quot;soccer_08&quot;, &quot;soccer_09&quot;, &quot;soccer_10&quot;, &quot;soccer_11&quot;]'><span class="sport-num">02</span><img src="images/img_003.jpg" alt="Soccer — School Club"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 11</span></div>
+<div class="sport-card-body"><h4>Soccer — School Club</h4><p class="tagline">I play for my middle school’s soccer club and enjoy working with my teammates.<span class="when">Since 2025 &middot; school club &middot; 3&ndash;6 hrs/week &middot; regional tournaments</span></p>
+<p class="count">11 photos &middot; click to enlarge</p></div>
+</article></div></section>
+<section class="group" id="group2">
+<div class="group-head"><span class="lane">02</span><div><h3>On the Water</h3><p class="en">Trying something new</p></div></div>
+<p class="blurb">I like how different water activities can be. Water skiing is fast, paddleboarding takes balance, and scuba diving lets me see what’s beneath the surface. Trying all three made me curious about what else I might enjoy.</p>
+<div class="cards"><article class="sport-card" id="s3">
+<div class="sport-card-media" data-keys='[&quot;wski_01&quot;, &quot;wski_02&quot;, &quot;wski_03&quot;, &quot;wski_04&quot;, &quot;wski_05&quot;, &quot;wski_06&quot;, &quot;wski_07&quot;]'><span class="sport-num">03</span><img src="images/img_033.jpg" alt="Water Ski"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 7</span></div>
+<div class="sport-card-body"><h4>Water Skiing</h4><p class="tagline">Getting up on the skis is a challenge I enjoy every time.<span class="when">Summers since 2024 &middot; about 4 hrs/month in season</span></p>
+<p class="count">7 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s4">
+<div class="sport-card-media" data-keys='[&quot;scuba_01&quot;, &quot;scuba_02&quot;, &quot;scuba_03&quot;, &quot;scuba_04&quot;, &quot;scuba_05&quot;, &quot;scuba_06&quot;, &quot;scuba_07&quot;, &quot;scuba_08&quot;, &quot;scuba_09&quot;]'><span class="sport-num">04</span><img src="images/img_005.jpg" alt="Scuba Diving"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 9</span></div>
+<div class="sport-card-body"><h4>Scuba Diving</h4><p class="tagline">I like exploring underwater and seeing what I can spot.<span class="when">Since 2024 &middot; pool training, about 4 hrs/month</span></p>
+<p class="count">9 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s5">
+<div class="sport-card-media" data-keys='[&quot;paddle_01&quot;, &quot;paddle_02&quot;, &quot;paddle_03&quot;, &quot;paddle_04&quot;, &quot;paddle_05&quot;, &quot;paddle_06&quot;, &quot;paddle_07&quot;, &quot;paddle_08&quot;, &quot;paddle_09&quot;, &quot;paddle_10&quot;, &quot;paddle_11&quot;, &quot;paddle_12&quot;, &quot;paddle_13&quot;, &quot;paddle_14&quot;]'><span class="sport-num">05</span><img src="images/img_047.jpg" alt="Stand-Up Paddleboard"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 14</span></div>
+<div class="sport-card-body"><h4>Stand-Up Paddleboard</h4><p class="tagline">I enjoy finding my balance and paddling out across the water.<span class="when">Summers since 2024 &middot; about 4 hrs/month in season</span></p>
+<p class="count">14 photos &middot; click to enlarge</p></div>
+</article>
+</div></section>
+<section class="group" id="group3">
+<div class="group-head"><span class="lane">03</span><div><h3>Snow &amp; Ice</h3><p class="en">Staying active in winter</p></div></div>
+<p class="blurb">I look forward to getting outside in winter. I like the feeling of making a smoother turn on skis or getting a little more comfortable on skates each time I go.</p>
+<div class="cards"><article class="sport-card" id="s7">
+<div class="sport-card-media" data-keys='[&quot;ski_01&quot;, &quot;ski_02&quot;, &quot;ski_03&quot;, &quot;ski_04&quot;, &quot;ski_05&quot;]'><span class="sport-num">07</span><img src="images/img_008.jpg" alt="Ski"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 5</span></div>
+<div class="sport-card-body"><h4>Skiing</h4><p class="tagline">I like practicing turns and getting more comfortable on the slopes.<span class="when">Each winter since 2022 &middot; about 4 hrs/month in season</span></p>
+<p class="count">5 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s8">
+<div class="sport-card-media" data-keys='[&quot;skate_01&quot;, &quot;skate_02&quot;, &quot;skate_03&quot;, &quot;skate_04&quot;, &quot;skate_05&quot;, &quot;skate_06&quot;, &quot;skate_07&quot;, &quot;skate_08&quot;]'><span class="sport-num">08</span><img src="images/img_009.jpg" alt="Ice Skating"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 8</span></div>
+<div class="sport-card-body"><h4>Ice Skating</h4><p class="tagline">I enjoy the feeling of gliding once I find my balance.<span class="when">Each winter since 2023 &middot; about 4 hrs/month in season</span></p>
+<p class="count">8 photos &middot; click to enlarge</p></div>
+</article></div></section>
+<section class="group" id="group4">
+<div class="group-head"><span class="lane">04</span><div><h3>More Activities</h3><p class="en">From the climbing wall to the bike trail</p></div></div>
+<p class="blurb">I enjoy activities that give me different ways to challenge myself. Some days that means figuring out a route on a climbing wall. Other days it means practicing a shot or seeing where a bike trail goes.</p>
+<div class="cards"><article class="sport-card" id="s9">
+<div class="sport-card-media" data-keys='[&quot;arch_01&quot;, &quot;arch_02&quot;, &quot;arch_03&quot;, &quot;arch_04&quot;, &quot;arch_05&quot;, &quot;arch_06&quot;, &quot;arch_07&quot;, &quot;arch_08&quot;, &quot;arch_09&quot;, &quot;arch_10&quot;]'><span class="sport-num">09</span><img src="images/img_010.jpg" alt="Archery"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 10</span></div>
+<div class="sport-card-body"><h4>Archery</h4><p class="tagline">I like taking my time to line up each shot.<span class="when">Since 2023 &middot; about 4 hrs/month</span></p>
+<p class="count">10 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s10">
+<div class="sport-card-media" data-keys='[&quot;bowl_01&quot;, &quot;bowl_02&quot;, &quot;bowl_03&quot;, &quot;bowl_04&quot;, &quot;bowl_05&quot;, &quot;bowl_06&quot;, &quot;bowl_07&quot;, &quot;bowl_08&quot;, &quot;bowl_09&quot;, &quot;bowl_10&quot;]'><span class="sport-num">10</span><img src="images/img_011.jpg" alt="Bowling"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 10</span></div>
+<div class="sport-card-body"><h4>Bowling</h4><p class="tagline">I enjoy seeing what happens when I adjust my aim or release.<span class="when">Since 2023 &middot; about 4 hrs/month</span></p>
+<p class="count">10 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s11">
+<div class="sport-card-media" data-keys='[&quot;climb_01&quot;, &quot;climb_02&quot;, &quot;climb_03&quot;, &quot;climb_04&quot;, &quot;climb_05&quot;, &quot;climb_06&quot;, &quot;climb_07&quot;, &quot;climb_08&quot;]'><span class="sport-num">11</span><img src="images/img_012.jpg" alt="Bouldering"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 8</span></div>
+<div class="sport-card-body"><h4>Bouldering</h4><p class="tagline">I like figuring out which holds to use and trying a different route if I get stuck.<span class="when">Since 2024 &middot; about 4 hrs/month</span></p>
+<p class="count">8 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s12">
+<div class="sport-card-media" data-keys='[&quot;bike_01&quot;, &quot;bike_02&quot;, &quot;bike_03&quot;, &quot;bike_04&quot;, &quot;bike_05&quot;, &quot;bike_06&quot;, &quot;bike_07&quot;, &quot;bike_08&quot;, &quot;bike_09&quot;, &quot;bike_10&quot;, &quot;bike_11&quot;]'><span class="sport-num">12</span><img src="images/img_013.jpg" alt="Cycling &amp; MTB"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 11</span></div>
+<div class="sport-card-body"><h4>Cycling &amp; MTB</h4><p class="tagline">I like exploring new routes on roads and trails.<span class="when">Since 2023 &middot; about 4 hrs/month, roads &amp; trails</span></p>
+<p class="count">11 photos &middot; click to enlarge</p></div>
+</article>
+<article class="sport-card" id="s6">
+<div class="sport-card-media" data-keys='[&quot;sboard_01&quot;, &quot;sboard_02&quot;, &quot;sboard_03&quot;, &quot;sboard_04&quot;, &quot;sboard_05&quot;]'><span class="sport-num">13</span><img src="images/img_007.jpg" alt="Caster Board"/>
+<button class="arr prev" aria-label="Previous photo">&#8249;</button>
+<button class="arr next" aria-label="Next photo">&#8250;</button>
+<span class="counter">1 / 5</span></div>
+<div class="sport-card-body"><h4>Caster Board</h4><p class="tagline">I like practicing turns and seeing how smoothly I can ride.<span class="when">Since 2023 &middot; about 4 hrs/month</span></p>
+<p class="count">5 photos &middot; click to enlarge</p></div>
+</article></div></section>
+
+<section id="video" class="video-sec">
+  <div class="sec-head reveal"><span class="no">03</span><h2>In Motion</h2><div class="rule"></div></div>
+  <p class="blurb" style="color:#C9D4E0;margin-bottom:2rem">Here are a few clips of me water skiing, skiing, practicing scuba in a pool, and riding on a bike trail.</p>
+  <div class="clips"><figure class="clip"><video controls preload="metadata" playsinline src="videos/video_001.mp4"></video>
+<figcaption><strong>Water Ski — on the lake</strong><span>Summer 2025</span></figcaption></figure>
+<figure class="clip"><video controls preload="metadata" playsinline src="videos/video_002.mp4"></video>
+<figcaption><strong>Ski — winter run</strong><span>January 2026</span></figcaption></figure>
+<figure class="clip"><video controls preload="metadata" playsinline src="videos/video_003.mp4"></video>
+<figcaption><strong>Scuba — pool training</strong><span>August 2025</span></figcaption></figure>
+<figure class="clip"><video controls preload="metadata" playsinline src="videos/video_004.mp4"></video>
+<figcaption><strong>Cycling — on the trail</strong><span>August 2025</span></figcaption></figure></div>
+</section>
+
+<section id="awards">
+  <div class="sec-head reveal"><span class="no">04</span><h2>Awards &amp; Certificates</h2><div class="rule"></div></div>
+  <p class="blurb">Beyond the field and the lake: honors, leadership, and certifications. Korean certificates are shown with English explanations.</p>
+  <div class="awards-grid"><article class="award-card">
+<div class="award-media"><img src="images/certs/cert_english_speech_2023.jpg" alt="Certificate: Honor Prize, 28th Korea National Students' English Speech Contest"/></div>
+<div class="award-body"><h4>Honor Prize &mdash; 28th Korea National Students&rsquo; English Speech Contest</h4><p class="award-meta">World Association for Arts Exchange &middot; sponsored by Loyola Marymount University &middot; July 15, 2023</p>
+<p class="award-desc">A nationwide English speech contest  that also selects student representatives for cultural performances in the United States. Ye-jun delivered his speech entirely in English and was awarded the Honor Prize (Usoo-sang, "Excellence Award"), one of the contest&rsquo;s top recognitions.</p></div>
+</article>
+<article class="award-card">
+<div class="award-media"><img src="images/certs/cert_swim_level7_2023.jpg" alt="Certificate: Swimming Proficiency Level 7, Korea Survival Swimming Association"/></div>
+<div class="award-body"><h4>Swimming Proficiency &mdash; Level 7 Certified</h4><p class="award-meta">Korea Survival Swimming Association &middot; December 1, 2023</p>
+<p class="award-desc">Official survival-swimming certification  issued by the Korea Survival Swimming Association. Passing Level 7 requires demonstrating sustained freestyle swimming and open-water survival skills &mdash; water confidence that carries into his water sports: water ski, scuba, and paddleboarding.</p></div>
+</article>
+<article class="award-card">
+<div class="award-media"><img src="images/certs/cert_class_vp_2024.jpg" alt="Certificate of Appointment: Class Vice President, Chung-Ang University Middle School"/></div>
+<div class="award-body"><h4>Class Vice President &mdash; Official Appointment</h4><p class="award-meta">Chung-Ang University Middle School &middot; March 4, 2024</p>
+<p class="award-desc">Certificate of Appointment (Immyeong-jang) signed by the school principal: Ye-jun served as Class Vice President of Grade 7, Class 8, for the first semester of 2024 &mdash; a leadership role representing his class and supporting school events.</p></div>
+</article>
+<article class="award-card">
+<div class="award-media"><img src="images/certs/cert_math_tesom_2024.jpg" alt="Certificate: Encouragement Award, 20th TESOM National Math Assessment"/></div>
+<div class="award-body"><h4>Encouragement Award &mdash; 20th TESOM National Math Assessment</h4><p class="award-meta">Visang Education Co. &middot; July 9, 2024</p>
+<p class="award-desc">TESOM  is a nationwide mathematics achievement evaluation hosted by Visang Education, one of Korea&rsquo;s largest education companies. Ye-jun received the Encouragement Award  in the first-half 2024 round as a 7th grader.</p></div>
+</article>
+<article class="award-card">
+<div class="award-media"><img src="images/certs/cert_reading_2023.jpg" alt="Certificate: Grand Prize, Reading Certification Contest, Chung-Ang University Elementary School"/></div>
+<div class="award-body"><h4>Grand Prize &mdash; Reading Certification Contest</h4><p class="award-meta">Chung-Ang University Elementary School &middot; December 12, 2023</p>
+<p class="award-desc">Top Excellence Award (Choewoosoo-sang, the contest&rsquo;s highest honor) in &ldquo;Reading that Enriches Life&rdquo;, the elementary school&rsquo;s reading certification contest &mdash; earned as a 6th grader.</p></div>
+</article>
+<article class="award-card">
+<div class="award-media"><img src="images/certs/cert_hanja_pre5_2023.jpg" alt="Certificate: Hanja Proficiency Pre-Level 5, Hanja Education Promotion Association"/></div>
+<div class="award-body"><h4>Hanja Proficiency &mdash; Pre-Level 5 (Jun-5)</h4><p class="award-meta">Hanja Education Promotion Association &middot; February 7, 2023 &middot; lifetime validity</p>
+<p class="award-desc">National Chinese-character (Hanja) proficiency certificate. Korean Hanja exam levels run from 8 (entry) down to 1 (expert): Pre-Level 5 (Jun-5) sits above Level 6, certifying command of roughly 1,500 characters &mdash; issued under Korea&rsquo;s Framework Act on Qualifications.</p></div>
+</article>
+<article class="award-card">
+<div class="award-media"><img src="images/certs/cert_hanja_6_2022.jpg" alt="Certificate: Hanja Proficiency Level 6, Hanja Education Promotion Association"/></div>
+<div class="award-body"><h4>Hanja Proficiency &mdash; Level 6 (6th Grade)</h4><p class="award-meta">Hanja Education Promotion Association &middot; February 15, 2022 &middot; lifetime validity</p>
+<p class="award-desc">His first national Hanja qualification: Level 6 (6th Grade), certifying practical knowledge of approximately 1,000 Chinese characters. He advanced to Pre-Level 5 within a year (see the certificate above) &mdash; steady, test-measurable progress.</p></div>
+</article></div></section>
+
+<footer>
+  <p class="big">I’m looking forward to what I’ll learn next.</p>
+  <p class="contact">Contact: lucas.yjchoi@gmail.com &middot; +82 10-2008-5247<br>Portfolio prepared for Grade 9 admission, Fall 2027.</p>
+  <div class="fine"><span>Yejun Choi &middot; Student Portfolio</span><span>Fall 2027</span></div>
+</footer>
+
+<div id="lb" role="dialog" aria-label="Image viewer"><button aria-label="Close">&times;</button><img alt="Enlarged photo"/></div>
+
+<script>
+const MEDIA={"track_01": "images/img_014.jpg", "track_02": "images/img_015.jpg", "track_03": "images/img_016.jpg", "track_04": "images/img_017.jpg", "track_05": "images/img_018.jpg", "soccer_01": "images/img_019.jpg", "soccer_02": "images/img_020.jpg", "soccer_03": "images/img_021.jpg", "soccer_04": "images/img_022.jpg", "soccer_05": "images/img_023.jpg", "soccer_06": "images/img_024.jpg", "soccer_07": "images/img_025.jpg", "soccer_08": "images/img_026.jpg", "soccer_09": "images/img_027.jpg", "soccer_10": "images/img_028.jpg", "soccer_11": "images/img_029.jpg", "wski_01": "images/img_030.jpg", "wski_02": "images/img_031.jpg", "wski_03": "images/img_032.jpg", "wski_04": "images/img_033.jpg", "wski_05": "images/img_034.jpg", "wski_06": "images/img_035.jpg", "wski_07": "images/img_036.jpg", "scuba_01": "images/img_037.jpg", "scuba_02": "images/img_038.jpg", "scuba_03": "images/img_039.jpg", "scuba_04": "images/img_040.jpg", "scuba_05": "images/img_041.jpg", "scuba_06": "images/img_042.jpg", "scuba_07": "images/img_043.jpg", "scuba_08": "images/img_044.jpg", "scuba_09": "images/img_045.jpg", "paddle_01": "images/img_046.jpg", "paddle_02": "images/img_047.jpg", "paddle_03": "images/img_048.jpg", "paddle_04": "images/img_049.jpg", "paddle_05": "images/img_050.jpg", "paddle_06": "images/img_051.jpg", "paddle_07": "images/img_052.jpg", "paddle_08": "images/img_053.jpg", "paddle_09": "images/img_054.jpg", "paddle_10": "images/img_055.jpg", "paddle_11": "images/img_056.jpg", "paddle_12": "images/img_057.jpg", "paddle_13": "images/img_058.jpg", "paddle_14": "images/img_059.jpg", "sboard_01": "images/img_060.jpg", "sboard_02": "images/img_061.jpg", "sboard_03": "images/img_062.jpg", "sboard_04": "images/img_063.jpg", "sboard_05": "images/img_064.jpg", "ski_01": "images/img_065.jpg", "ski_02": "images/img_066.jpg", "ski_03": "images/img_067.jpg", "ski_04": "images/img_068.jpg", "ski_05": "images/img_069.jpg", "skate_01": "images/img_070.jpg", "skate_02": "images/img_071.jpg", "skate_03": "images/img_072.jpg", "skate_04": "images/img_073.jpg", "skate_05": "images/img_074.jpg", "skate_06": "images/img_075.jpg", "skate_07": "images/img_076.jpg", "skate_08": "images/img_077.jpg", "arch_01": "images/img_078.jpg", "arch_02": "images/img_079.jpg", "arch_03": "images/img_080.jpg", "arch_04": "images/img_081.jpg", "arch_05": "images/img_082.jpg", "arch_06": "images/img_083.jpg", "arch_07": "images/img_084.jpg", "arch_08": "images/img_085.jpg", "arch_09": "images/img_086.jpg", "arch_10": "images/img_087.jpg", "bowl_01": "images/img_088.jpg", "bowl_02": "images/img_089.jpg", "bowl_03": "images/img_090.jpg", "bowl_04": "images/img_091.jpg", "bowl_05": "images/img_092.jpg", "bowl_06": "images/img_093.jpg", "bowl_07": "images/img_094.jpg", "bowl_08": "images/img_095.jpg", "bowl_09": "images/img_096.jpg", "bowl_10": "images/img_097.jpg", "climb_01": "images/img_098.jpg", "climb_02": "images/img_099.jpg", "climb_03": "images/img_100.jpg", "climb_04": "images/img_101.jpg", "climb_05": "images/img_102.jpg", "climb_06": "images/img_103.jpg", "climb_07": "images/img_104.jpg", "climb_08": "images/img_105.jpg", "bike_01": "images/img_106.jpg", "bike_02": "images/img_107.jpg", "bike_03": "images/img_108.jpg", "bike_04": "images/img_109.jpg", "bike_05": "images/img_110.jpg", "bike_06": "images/img_111.jpg", "bike_07": "images/img_112.jpg", "bike_08": "images/img_113.jpg", "bike_09": "images/img_114.jpg", "bike_10": "images/img_115.jpg", "bike_11": "images/img_116.jpg", "g6_01": "images/img_117.jpg", "g6_02": "images/img_118.jpg", "g6_03": "images/img_119.jpg", "g6_04": "images/img_120.jpg", "g6_05": "images/img_121.jpg", "g6_06": "images/img_122.jpg"};document.querySelectorAll('img[data-key]').forEach(function(im){im.src=MEDIA[im.dataset.key]});
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// per-card sliders
+document.querySelectorAll('.sport-card-media').forEach(m=>{
+  const keys=JSON.parse(m.dataset.keys); let i=0;
+  const img=m.querySelector('img'), cnt=m.querySelector('.counter');
+  const go=d=>{i=(i+d+keys.length)%keys.length; img.src=MEDIA[keys[i]]; cnt.textContent=(i+1)+' / '+keys.length;};
+  m.querySelector('.prev').addEventListener('click',e=>{e.stopPropagation();go(-1)});
+  m.querySelector('.next').addEventListener('click',e=>{e.stopPropagation();go(1)});
+});
+
+// lightbox for any gallery image
+const lb=document.getElementById('lb'),lbi=lb.querySelector('img');
+document.addEventListener('click',e=>{
+  const t=e.target;
+  if(t.tagName==='IMG'&&t.closest('.sport-card-media,.g6,.award-media')){lbi.src=t.src;lb.classList.add('on');}
+});
+lb.addEventListener('click',()=>lb.classList.remove('on'));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on')});
+</script>
+</body>
+</html>
